@@ -104,16 +104,39 @@ document.getElementById("btnNo").onclick = () => {
     noClick++;
     const msg = document.getElementById("msg");
     if(noClick===1) msg.innerText="Ih gabisa di klik 😆";
-    if(noClick===2) msg.innerText="hanya bisa klik IYAAA AKU RINDU 😉";
+    if(noClick===2) msg.innerText="Hanya bisa klik IYAAA AKU RINDU KAMU 😉";
 };
 
+// Custom notif "Aku juga rindu mas ❤️" dengan tombol Lanjutkan
 document.getElementById("btnYes").onclick = () => {
-    alert("Aku juga rindu mas ❤️");
-    document.getElementById("popupPantun").style.display="none";
-    document.getElementById("content").style.display="block";
-    startHearts();
+    const notif = document.createElement("div");
+    notif.style.position = "fixed";
+    notif.style.top = "50%";
+    notif.style.left = "50%";
+    notif.style.transform = "translate(-50%, -50%)";
+    notif.style.background = "white";
+    notif.style.padding = "20px";
+    notif.style.borderRadius = "10px";
+    notif.style.boxShadow = "0 0 10px rgba(0,0,0,0.3)";
+    notif.style.textAlign = "center";
+    notif.style.zIndex = "1000";
+
+    notif.innerHTML = `
+        <p>Aku juga rindu mas ❤️</p>
+        <button id="btnLanjut" style="padding:10px 20px; border:none; background:#ff4d6d; color:white; border-radius:8px; cursor:pointer;">Lanjutkan</button>
+    `;
+
+    document.body.appendChild(notif);
+
+    document.getElementById("btnLanjut").onclick = () => {
+        notif.remove();
+        document.getElementById("popupPantun").style.display = "none";
+        document.getElementById("content").style.display = "block";
+        startHearts();
+    };
 };
 
+// Animasi hati
 function startHearts(){
     setInterval(()=>{
         let h=document.createElement("div");
