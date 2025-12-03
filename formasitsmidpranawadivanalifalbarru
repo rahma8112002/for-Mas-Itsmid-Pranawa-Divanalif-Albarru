@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>untuk Mas Itsmid</title>
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    background: #ffe6f0;
+    font-family: "Poppins", sans-serif;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+.popup {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+.popup-box {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    width: 80%;
+    max-width: 350px;
+    text-align: center;
+    font-size: 18px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    animation: scaleUp 0.4s ease forwards;
+}
+
+@keyframes scaleUp {
+    from {transform: scale(0.5); opacity:0;}
+    to {transform: scale(1); opacity:1;}
+}
+
+button {
+    margin: 10px;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 10px;
+    background-color: #ff4d6d;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+#content {
+    display: none;
+    animation: fadeIn 1.5s ease forwards;
+    margin-top: 30px;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+.heart {
+    position: fixed;
+    top: -10px;
+    color: #ff2d55;
+    font-size: 25px;
+    animation: fall linear infinite;
+    pointer-events: none;
+}
+
+@keyframes fall {
+    0% {transform: translateY(0);}
+    100% {transform: translateY(120vh);}
+}
+
+video {
+    width: 90%;
+    max-width: 400px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+</style>
+</head>
+<body>
+
+<!-- POPUP 1 -->
+<div class="popup" id="popup1">
+    <div class="popup-box">
+        <p>Apa mas sudah siap?</p>
+        <button onclick="nextPopup(1)">Oke</button>
+        <button onclick="nextPopup(1)">Iya</button>
+    </div>
+</div>
+
+<!-- POPUP 2 -->
+<div class="popup" id="popup2" style="display:none;">
+    <div class="popup-box">
+        <p>Yakin udah siap?</p>
+        <button onclick="nextPopup(2)">Yakin</button>
+        <button onclick="nextPopup(2)">Yakin banget kok!</button>
+    </div>
+</div>
+
+<!-- POPUP 3 -->
+<div class="popup" id="popup3" style="display:none;">
+    <div class="popup-box">
+        <p>Aku tanya sekali lagi, udah siap?</p>
+        <button onclick="nextPopup(3)">Siap</button>
+        <button onclick="nextPopup(3)">Siap banget</button>
+    </div>
+</div>
+
+<!-- POPUP PANTUN -->
+<div class="popup" id="popupPantun" style="display:none;">
+    <div class="popup-box">
+        <p>
+        Jalan-jalan ke kota Malang,<br>
+        Mampir sebentar beli tahu.<br>
+        Happy birthday, senyum datang,<br>
+        Aku tahu kamu rindu aku 💖
+        </p>
+        <button id="btnNo">Enggak</button>
+        <button id="btnYes">IYAA AKU RINDU BERAT</button>
+        <p id="msg" style="color:red; font-size:14px; margin-top:10px;"></p>
+    </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div id="content">
+    <!-- VIDEO LOVE -->
+    <video autoplay loop muted playsinline>
+        <source src="https://cdn.pixabay.com/vimeo/390727740/Heart-Animation-1-512.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
+
+    <!-- Ucapan -->
+    <h1 style="text-align:center;">Selamat ulang tahun yang ke-25, Mas Itsmid Pranawa Divanalif Albarru! 🎉</h1>
+    <p style="font-size:16px;">
+Di usia seperempat abad ini, semoga mas semakin kuat, semakin bijak, dan semakin mantap melangkah menuju semua mimpi yang mas impikan.<br><br>
+
+Aku tahu perjalanan mas nggak selalu mudah, tapi mas selalu berhasil melewatinya dengan kepala tegak dan hati yang besar. Terus percaya sama proses, terus percaya sama diri mas sendiri, karena mas punya potensi besar dan masa depan yang cerah menunggu untuk mas taklukkan.<br><br>
+
+Semoga tahun ini membawa lebih banyak tawa, kesempatan, pencapaian baru, dan ketenangan yang mas butuhkan. Jangan ragu minta bantuan kalau butuh, jangan takut mencoba hal baru, dan jangan berhenti jadi versi terbaik dari dirimu.<br><br>
+
+You got this.<br>
+Happy 25th birthday! 💖<br><br>
+
+From Rahma<br>
+Aku buat ini dengan penuh perjuangan, berjam-jam di depan laptop, I hope u like this.
+    </p>
+</div>
+
+<script>
+function nextPopup(num){
+    document.getElementById("popup"+num).style.display="none";
+    if(num===3){
+        document.getElementById("popupPantun").style.display="flex";
+    } else {
+        document.getElementById("popup"+(num+1)).style.display="flex";
+    }
+}
+
+// Pantun buttons
+let noClickCount=0;
+document.getElementById("btnNo").addEventListener("click", function(){
+    noClickCount++;
+    const msg=document.getElementById("msg");
+    if(noClickCount===1) msg.innerText="Ih gabisa di klik 😆";
+    else if(noClickCount===2) msg.innerText="Kok di klik lagi, gabakal bisa, coba klik IYAA AKU RINDU BERAT 😉";
+});
+
+document.getElementById("btnYes").addEventListener("click", function(){
+    document.getElementById("popupPantun").style.display="none";
+    document.getElementById("content").style.display="block";
+    startHearts();
+});
+
+// Falling hearts
+function startHearts(){
+    setInterval(()=>{
+        let heart=document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML="❤";
+        heart.style.left=Math.random()*100+"vw";
+        heart.style.fontSize=(20+Math.random()*15)+"px";
+        heart.style.animationDuration=(3+Math.random()*3)+"s";
+        document.body.appendChild(heart);
+        setTimeout(()=>heart.remove(),6000);
+    },300);
+}
+</script>
+</body>
+</html>
