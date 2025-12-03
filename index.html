@@ -3,106 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>untuk Mas Itsmid</title>
+<title>Untuk Mas Itsmid</title>
 <style>
-body {
-    margin: 0;
-    padding: 0;
-    background: #ffe6f0;
-    font-family: "Poppins", sans-serif;
-    text-align: center;
-    overflow-x: hidden;
-}
-
-.popup {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0,0,0,0.6);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 999;
-}
-
-.popup-box {
-    background: white;
-    padding: 25px;
-    border-radius: 15px;
-    width: 80%;
-    max-width: 350px;
-    text-align: center;
-    font-size: 18px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.3);
-    animation: scaleUp 0.4s ease forwards;
-}
-
-@keyframes scaleUp {
-    from {transform: scale(0.5); opacity:0;}
-    to {transform: scale(1); opacity:1;}
-}
-
-button {
-    margin: 10px;
-    padding: 12px 25px;
-    border: none;
-    border-radius: 10px;
-    background-color: #ff4d6d;
-    color: white;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-button:active {
-    transform: scale(0.95);
-}
-
-#content {
-    display: none;
-    animation: fadeIn 1.5s ease forwards;
-    margin-top: 30px;
-    max-width: 90%;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: left;
-}
-
-@keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity: 1;}
-}
-
-.heart {
-    position: fixed;
-    top: -10px;
-    color: #ff2d55;
-    font-size: 25px;
-    animation: fall linear infinite;
-    pointer-events: none;
-}
-
-@keyframes fall {
-    0% {transform: translateY(0);}
-    100% {transform: translateY(120vh);}
-}
-
-video {
-    width: 90%;
-    max-width: 400px;
-    border-radius: 15px;
-    margin-bottom: 20px;
-}
-
-/* Box jawaban user */
-#jawabanBox {
-    margin-top: 30px;
-    background: #fff;
-    padding: 15px;
-    border-radius: 10px;
-    display: none;
-    color: #d4004d;
-    font-weight: bold;
-}
+body { margin:0; padding:0; background:#ffe6f0; font-family:"Poppins",sans-serif; text-align:center; overflow-x:hidden;}
+.popup { position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); display:flex; align-items:center; justify-content:center; z-index:999;}
+.popup-box { background:white; padding:25px; border-radius:15px; width:80%; max-width:350px; text-align:center; font-size:18px; box-shadow:0 0 15px rgba(0,0,0,0.3); animation:scaleUp 0.4s ease forwards;}
+@keyframes scaleUp { from{transform:scale(.5); opacity:0;} to{transform:scale(1); opacity:1;} }
+button { margin:10px; padding:12px 25px; border:none; border-radius:10px; background:#ff4d6d; color:white; cursor:pointer; font-size:16px;}
+button:active { transform:scale(.95);}
+#content { display:none; animation:fadeIn 1.5s ease forwards; margin-top:30px; max-width:90%; margin:auto; text-align:left;}
+@keyframes fadeIn { from{opacity:0;} to{opacity:1;} }
+.heart { position:fixed; top:-10px; color:#ff2d55; font-size:25px; animation:fall linear infinite; pointer-events:none; }
+@keyframes fall { 0%{transform:translateY(0);} 100%{transform:translateY(120vh);} }
+video { width:90%; max-width:400px; border-radius:15px; margin-bottom:20px; }
+.kado-text { font-size:16px; color:#ff4d6d; font-weight:bold; cursor:pointer; }
+.kado-text:hover { text-decoration:underline; }
 </style>
 </head>
 <body>
@@ -145,7 +60,7 @@ video {
         </p>
         <button id="btnNo">Enggak</button>
         <button id="btnYes">IYAA AKU RINDU BERAT</button>
-        <p id="msg" style="color:red; font-size:14px; margin-top:10px;"></p>
+        <p id="msg"></p>
     </div>
 </div>
 
@@ -153,35 +68,28 @@ video {
 <div id="content">
     <video autoplay loop muted playsinline>
         <source src="https://cdn.pixabay.com/vimeo/390727740/Heart-Animation-1-512.mp4" type="video/mp4">
-        Your browser does not support HTML5 video.
     </video>
-
     <h1 style="text-align:center;">Selamat ulang tahun yang ke-25, Mas Itsmid Pranawa Divanalif Albarru! 🎉</h1>
-
     <p style="font-size:16px;">
-        Di usia seperempat abad ini… <br><br>
-
-        <b>Mas mau kado apa? coba ketik disini ya:</b><br><br>
-
-        <input type="text" id="kadoInput" placeholder="Tulis di sini..." 
-        style="width:95%; padding:10px; border-radius:8px; border:1px solid #ff4d6d; font-size:16px;">
-
-        <button onclick="submitKado()">Kirim</button>
-
-        <p id="errorKado" style="color:red; margin-top:5px; font-size:14px;"></p>
+Di usia seperempat abad ini, semoga mas semakin kuat, semakin bijak, dan semakin mantap melangkah menuju semua mimpi yang mas impikan.<br><br>
+Aku tahu perjalanan mas nggak selalu mudah, tapi mas selalu berhasil melewatinya dengan kepala tegak dan hati yang besar. Terus percaya sama proses, terus percaya sama diri mas sendiri, karena mas punya potensi besar dan masa depan yang cerah menunggu untuk mas taklukkan.<br><br>
+Semoga tahun ini membawa lebih banyak tawa, kesempatan, pencapaian baru, dan ketenangan yang mas butuhkan. Jangan ragu minta bantuan kalau butuh, jangan takut mencoba hal baru, dan jangan berhenti jadi versi terbaik dari dirimu.<br><br>
+You got this.<br>
+Happy 25th birthday! 💖<br><br>
+From Rahma<br>
+Aku buat ini dengan penuh perjuangan, berjam-jam di depan laptop, I hope u like this.
     </p>
+
+    <!-- TULISAN KADO -->
+    <div style="margin-top:30px; padding:20px; background:#fff; border-radius:10px;">
+      <h2 style="color:#ff4d6d;">Mas mau kado apa? 🎁</h2>
+      <p class="kado-text" onclick="window.open('https://forms.gle/vGDsC2zacF6mEzUY8', '_blank');">
+        Jawab disini ya mas
+      </p>
+    </div>
 </div>
 
-<div id="jawabanBox"></div>
-
-<!-- EmailJS CDN -->
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
-
 <script>
-// ==== INIT EMAILJS ====
-emailjs.init("YOUR_PUBLIC_KEY"); 
-// ganti dengan public key dari EmailJS
-
 function nextPopup(num){
     document.getElementById("popup"+num).style.display="none";
     if(num===3){
@@ -191,80 +99,32 @@ function nextPopup(num){
     }
 }
 
-// Tombol pantun
-let noClickCount = 0;
-document.getElementById("btnNo").addEventListener("click", function(){
-    noClickCount++;
+let noClick=0;
+document.getElementById("btnNo").onclick = () => {
+    noClick++;
     const msg = document.getElementById("msg");
-    if(noClickCount === 1){
-        msg.innerText = "Ih gabisa di klik 😆";
-    } else if(noClickCount === 2){
-        msg.innerText = "Kok di klik lagi, gabakal bisa, coba klik IYAA AKU RINDU BERAT 😉";
-    }
-});
+    if(noClick===1) msg.innerText="Ih gabisa di klik 😆";
+    if(noClick===2) msg.innerText="hanya bisa klik IYAAA AKU RINDU 😉";
+};
 
-document.getElementById("btnYes").addEventListener("click", function(){
+document.getElementById("btnYes").onclick = () => {
     alert("Aku juga rindu mas ❤️");
     document.getElementById("popupPantun").style.display="none";
     document.getElementById("content").style.display="block";
     startHearts();
-});
+};
 
-// Hujan hati
 function startHearts(){
     setInterval(()=>{
-        let heart=document.createElement("div");
-        heart.classList.add("heart");
-        heart.innerHTML="❤";
-        heart.style.left=Math.random()*100+"vw";
-        heart.style.fontSize=(20+Math.random()*15)+"px";
-        heart.style.animationDuration=(3+Math.random()*3)+"s";
-        document.body.appendChild(heart);
-        setTimeout(()=>heart.remove(),6000);
+        let h=document.createElement("div");
+        h.classList.add("heart");
+        h.innerHTML="❤";
+        h.style.left=Math.random()*100+"vw";
+        h.style.fontSize=(20+Math.random()*15)+"px";
+        h.style.animationDuration=(3+Math.random()*3)+"s";
+        document.body.appendChild(h);
+        setTimeout(()=>h.remove(),6000);
     },300);
-}
-
-// ====================
-// VALIDASI & KIRIM EMAIL
-// ====================
-function submitKado(){
-    let input = document.getElementById("kadoInput").value.trim();
-    let error = document.getElementById("errorKado");
-    let box = document.getElementById("jawabanBox");
-
-    // Tidak boleh kosong
-    if(input === ""){
-        error.innerText = "Wajib diisi ya mas 💖";
-        box.style.display = "none";
-        return;
-    }
-
-    // Hanya huruf
-    let regex = /^[a-zA-Z\s]+$/;
-    if(!regex.test(input)){
-        error.innerText = "Hanya boleh diisi huruf ya mas (tanpa angka & simbol) 💕";
-        box.style.display = "none";
-        return;
-    }
-
-    // Tampilkan jawaban di halaman
-    error.innerText = "";
-    box.style.display = "block";
-    box.innerHTML = 
-        "💌 <b>Jawaban mas:</b><br>" + input + "<br><br>" +
-        "<small>(Jawaban ini juga sudah dikirim ke email kamu)</small>";
-
-    // === KIRIM EMAIL VIA EMAILJS ===
-    emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
-        kado_mas: input,
-        to_email: "dearahmadani.work@gmail.com"
-    })
-    .then(function(response) {
-        alert("Jawaban mas sudah terkirim ke email kamu 💌");
-    }, function(error) {
-        alert("Gagal mengirim email, coba lagi ya.");
-        console.log(error);
-    });
 }
 </script>
 
