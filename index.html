@@ -92,6 +92,17 @@ video {
     border-radius: 15px;
     margin-bottom: 20px;
 }
+
+/* Box jawaban user */
+#jawabanBox {
+    margin-top: 30px;
+    background: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    display: none;
+    color: #d4004d;
+    font-weight: bold;
+}
 </style>
 </head>
 <body>
@@ -123,7 +134,7 @@ video {
     </div>
 </div>
 
-<!-- POPUP PANTUN -->
+<!-- POPUP Pantun -->
 <div class="popup" id="popupPantun" style="display:none;">
     <div class="popup-box">
         <p>
@@ -140,30 +151,37 @@ video {
 
 <!-- MAIN CONTENT -->
 <div id="content">
-    <!-- VIDEO LOVE -->
     <video autoplay loop muted playsinline>
         <source src="https://cdn.pixabay.com/vimeo/390727740/Heart-Animation-1-512.mp4" type="video/mp4">
         Your browser does not support HTML5 video.
     </video>
 
-    <!-- Ucapan -->
     <h1 style="text-align:center;">Selamat ulang tahun yang ke-25, Mas Itsmid Pranawa Divanalif Albarru! 🎉</h1>
+
     <p style="font-size:16px;">
-Di usia seperempat abad ini, semoga mas semakin kuat, semakin bijak, dan semakin mantap melangkah menuju semua mimpi yang mas impikan.<br><br>
+        Di usia seperempat abad ini… <br><br>
 
-Aku tahu perjalanan mas nggak selalu mudah, tapi mas selalu berhasil melewatinya dengan kepala tegak dan hati yang besar. Terus percaya sama proses, terus percaya sama diri mas sendiri, karena mas punya potensi besar dan masa depan yang cerah menunggu untuk mas taklukkan.<br><br>
+        <b>Mas mau kado apa? coba ketik disini ya:</b><br><br>
 
-Semoga tahun ini membawa lebih banyak tawa, kesempatan, pencapaian baru, dan ketenangan yang mas butuhkan. Jangan ragu minta bantuan kalau butuh, jangan takut mencoba hal baru, dan jangan berhenti jadi versi terbaik dari dirimu.<br><br>
+        <input type="text" id="kadoInput" placeholder="Tulis di sini..." 
+        style="width:95%; padding:10px; border-radius:8px; border:1px solid #ff4d6d; font-size:16px;">
 
-You got this.<br>
-Happy 25th birthday! 💖<br><br>
+        <button onclick="submitKado()">Kirim</button>
 
-From Rahma<br>
-Aku buat ini dengan penuh perjuangan, berjam-jam di depan laptop, I hope u like this.
+        <p id="errorKado" style="color:red; margin-top:5px; font-size:14px;"></p>
     </p>
 </div>
 
+<div id="jawabanBox"></div>
+
+<!-- EmailJS CDN -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+
 <script>
+// ==== INIT EMAILJS ====
+emailjs.init("YOUR_PUBLIC_KEY"); 
+// ganti dengan public key dari EmailJS
+
 function nextPopup(num){
     document.getElementById("popup"+num).style.display="none";
     if(num===3){
@@ -173,22 +191,26 @@ function nextPopup(num){
     }
 }
 
-// Pantun buttons
-let noClickCount=0;
+// Tombol pantun
+let noClickCount = 0;
 document.getElementById("btnNo").addEventListener("click", function(){
     noClickCount++;
-    const msg=document.getElementById("msg");
-    if(noClickCount===1) msg.innerText="Ih gabisa di klik 😆";
-    else if(noClickCount===2) msg.innerText="Kok di klik lagi, gabakal bisa, coba klik IYAA AKU RINDU BERAT 😉";
+    const msg = document.getElementById("msg");
+    if(noClickCount === 1){
+        msg.innerText = "Ih gabisa di klik 😆";
+    } else if(noClickCount === 2){
+        msg.innerText = "Kok di klik lagi, gabakal bisa, coba klik IYAA AKU RINDU BERAT 😉";
+    }
 });
 
 document.getElementById("btnYes").addEventListener("click", function(){
+    alert("Aku juga rindu mas ❤️");
     document.getElementById("popupPantun").style.display="none";
     document.getElementById("content").style.display="block";
     startHearts();
 });
 
-// Falling hearts
+// Hujan hati
 function startHearts(){
     setInterval(()=>{
         let heart=document.createElement("div");
@@ -201,6 +223,50 @@ function startHearts(){
         setTimeout(()=>heart.remove(),6000);
     },300);
 }
+
+// ====================
+// VALIDASI & KIRIM EMAIL
+// ====================
+function submitKado(){
+    let input = document.getElementById("kadoInput").value.trim();
+    let error = document.getElementById("errorKado");
+    let box = document.getElementById("jawabanBox");
+
+    // Tidak boleh kosong
+    if(input === ""){
+        error.innerText = "Wajib diisi ya mas 💖";
+        box.style.display = "none";
+        return;
+    }
+
+    // Hanya huruf
+    let regex = /^[a-zA-Z\s]+$/;
+    if(!regex.test(input)){
+        error.innerText = "Hanya boleh diisi huruf ya mas (tanpa angka & simbol) 💕";
+        box.style.display = "none";
+        return;
+    }
+
+    // Tampilkan jawaban di halaman
+    error.innerText = "";
+    box.style.display = "block";
+    box.innerHTML = 
+        "💌 <b>Jawaban mas:</b><br>" + input + "<br><br>" +
+        "<small>(Jawaban ini juga sudah dikirim ke email kamu)</small>";
+
+    // === KIRIM EMAIL VIA EMAILJS ===
+    emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
+        kado_mas: input,
+        to_email: "dearahmadani.work@gmail.com"
+    })
+    .then(function(response) {
+        alert("Jawaban mas sudah terkirim ke email kamu 💌");
+    }, function(error) {
+        alert("Gagal mengirim email, coba lagi ya.");
+        console.log(error);
+    });
+}
 </script>
+
 </body>
 </html>
